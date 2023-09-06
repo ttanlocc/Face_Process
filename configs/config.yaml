@@ -1,0 +1,39 @@
+localize:
+  LocalizeTask:
+    params:
+      limit_side_len: 320
+      score_threshold: 0.6
+
+    weight01: weights/face/retinaface_mobilev3.onnx
+
+check_liveness:
+  CheckLivenessTask:
+    params:
+      real_threshold: 0.8
+
+    weight01: weights/face/2.7_80x80_MiniFASNetV2.onnx
+
+check_mask:
+  CheckMaskTask:
+    weight01: weights/face/MaskClassification-EdgeNeXt_XX_Small-Opset13-Static.onnx
+
+estimate_headpose:
+  EstimateHeadPoseTask:
+    weight01: weights/face/head_pose_estimation.onnx
+
+extract_vector:
+  ExtractVectorTask:
+    weight01: weights/face/3_1_EformerL1.onnx
+    weight02: weights/face/20_1_EformerV2S2.onnx
+    weight03: weights/face/20_1_EformerV2S2_static_opset16_simplify.onnx
+
+extract_emotion:
+  ExtractEmotionTask:
+    weight01: weights/face/APViT_public.onnx
+
+extract_agegender:
+  ExtractAgeGenderTaskV1:
+    weight01: weights/face/res34_fair_align_multi_7.onnx
+
+  ExtractAgeGenderTaskV2:
+    weight01: weights/face/volo_agegender.onnx
